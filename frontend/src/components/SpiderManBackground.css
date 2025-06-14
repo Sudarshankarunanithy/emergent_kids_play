@@ -1,0 +1,36 @@
+.spiderman-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(to bottom, #1a1a2e, #16213e);
+  overflow: hidden;
+}
+
+/* Add a subtle parallax effect to the buildings */
+@keyframes buildingParallax {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Add a glow effect to the webs */
+@keyframes webGlow {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+  100% {
+    filter: brightness(1);
+  }
+} 

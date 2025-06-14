@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './App.css';
+import SpiderManBackground from './components/SpiderManBackground';
 
 // Local storage helper functions
 const saveProgress = (data) => {
@@ -523,18 +524,16 @@ const GamePage = ({ gameType }) => {
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="min-h-screen bg-gray-100">
+        <SpiderManBackground />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/game/addition" element={<GamePage gameType="addition" />} />
-          <Route path="/game/subtraction" element={<GamePage gameType="subtraction" />} />
-          <Route path="/game/shapes" element={<GamePage gameType="shapes" />} />
-          <Route path="/adventure" element={<AdventureMode />} />
-          <Route path="/parent" element={<ParentCorner />} />
+          <Route path="/game/:gameType" element={<GamePage />} />
+          <Route path="/parent-corner" element={<ParentCorner />} />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
