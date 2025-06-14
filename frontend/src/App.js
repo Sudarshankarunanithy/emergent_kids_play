@@ -76,13 +76,14 @@ const MathGame = ({ gameType, onComplete }) => {
 
   const checkAnswer = () => {
     const isCorrect = parseInt(userAnswer) === question.answer;
+    const newScore = isCorrect ? score + 10 : score;
     
     if (isCorrect) {
-      setScore(score + 10);
+      setScore(newScore);
       setFeedback('🕷️ Amazing! Spidey is proud!');
       
       // Level up after 3 correct answers
-      if ((score + 10) % 30 === 0) {
+      if (newScore % 30 === 0) {
         setLevel(level + 1);
         setFeedback('🎉 Level Up! You\'re a math superhero!');
       }
@@ -91,15 +92,20 @@ const MathGame = ({ gameType, onComplete }) => {
     }
     
     setTimeout(() => {
-      if (score >= 50) {
+      if (newScore >= 50) {
         setGameComplete(true);
+        // Save progress immediately
         const progress = loadProgress();
-        progress.totalStars += Math.floor(score / 10);
+        progress.totalStars += Math.floor(newScore / 10);
+        progress.currentLevel = Math.max(progress.currentLevel, level);
         if (!progress.completedLevels.includes(gameType)) {
           progress.completedLevels.push(gameType);
         }
+        // Update last play date
+        progress.lastPlayDate = new Date().toISOString();
+        console.log('Saving progress:', progress); // Debug log
         saveProgress(progress);
-        onComplete(score);
+        onComplete(newScore);
       } else {
         generateQuestion();
         setUserAnswer('');
