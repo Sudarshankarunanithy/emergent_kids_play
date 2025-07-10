@@ -126,7 +126,7 @@ const MathGame = ({ gameType, onComplete }) => {
         <p className="text-xl mb-4">You scored {score} points!</p>
         <p className="text-lg text-gray-600">Spidey says: "With great math comes great responsibility!"</p>
       </div>
-    );
+    )
   }
 
   return (
@@ -370,7 +370,7 @@ const HomePage = () => {
           className="w-32 h-32 mx-auto rounded-full object-cover mb-6"
         />
         <h1 className="text-5xl font-bold text-red-600 mb-4">
-          🕷️ Spidey's Math Adventure
+          🕷️ Spidey's Math Adventure!!
         </h1>
         <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
           Join Spidey and his amazing friends on exciting math adventures! 
